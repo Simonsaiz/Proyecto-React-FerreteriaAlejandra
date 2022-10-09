@@ -7,11 +7,11 @@ const ItemListContainer = ({Bienvenidos}) => {
         fontSize: '20px',
         fontWeight: 'bold',
         color: 'white',
-        marginTop: '50px',
+        marginTop: '50px', 
     }
   return (
 
-    <div style={styles}>{Bienvenidos}</div>
+    <div style={styles}>Bienvenidos a nuetra ferreteria, productos y herrmientas al mejor precio'</div>
   )
 }
 

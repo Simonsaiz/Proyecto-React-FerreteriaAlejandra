@@ -2,17 +2,23 @@ import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
 import ItemListContainer from './Components/ItemListContainer';
-import Tools from './Components/Tools';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ItemListContainerCard from './Components/Card/ItemListContainerCard';
+import ItemDetail from './Components/Card/ItemDetail';
+
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <h1 className='title'>FERRETERIA ALEJANDRA</h1>
-      <ItemListContainer Bienvenidos='Bienvenidos a nuetra ferreteria, productos y herrmientas al mejor precio'/>
-      <Tools Herramientas='Amoladora'/>
-      <Tools Herramientas='Atornilladora'/>
-      <Tools Herramientas='Medidor Laser'/>
+      <BrowserRouter>
+        <Navbar/>
+        <h1 className='title'>FERRETERIA ALEJANDRA</h1>
+        <Routes>
+          <Route path={'/Inicio'} element={<ItemListContainer/>} />
+          <Route path={'/Tienda'} element={<ItemListContainerCard/>} />
+          <Route path={'/Tienda/item/:id'} element={<ItemDetail/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
