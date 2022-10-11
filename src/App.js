@@ -15,8 +15,8 @@ function App() {
         <h1 className='title'>FERRETERIA ALEJANDRA</h1>
         <Routes>
           <Route path={'/Inicio'} element={<ItemListContainer/>} />
-          <Route path={'/Tienda'} element={<ItemListContainerCard/>} />
-          <Route path={'/Tienda/item/:id'} element={<ItemDetail/>} />
+          <Route path={'/Productos'} element={<ItemListContainerCard/>} />
+          <Route path={'/Productos/item/:id'} element={<ItemDetail/>} />
         </Routes>
       </BrowserRouter>
     </>

@@ -26,11 +26,11 @@ const getItemDetail  = () => {
 }
 
     return (
-        <div className="card lg:card-side bg-base-100 shadow-xl m-10">
-            <figure><img class="rounded-full" src={item.img} alt={item.name}/></figure>
+        <div className="card lg:card-side bg-white shadow-xl m-10">
+            <figure><img src={item.img} alt={item.name} class="rounded-r-lg ml-10"/></figure>
             <div className="card-body">
                 <h2 className="card-title" class="text-red-600 font-semibold">{ item.name }</h2>
-                <p class>Precio { item.price }</p>
+                <p class="text-black">Precio { item.price }</p>
                 <ItemListCount/>
             </div>
         </div>

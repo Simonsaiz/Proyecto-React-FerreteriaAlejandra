@@ -16,7 +16,7 @@ return (
         <div className="flex-none">
             <ul className="menu menu-horizontal p-0">
             <li><Link to='Inicio'>Inicio</Link></li>
-            <li><Link to='Tienda'>Productos</Link></li>
+            <li><Link to='Productos'>Productos</Link></li>
             <li><Link to=''>Ofertas</Link></li>
             <li><Link to=''>Nosotros</Link></li>
             <li><Link to=''>Contacto</Link></li>
