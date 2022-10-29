@@ -3,7 +3,7 @@ import ItemCard from './ItemCard'
 import {products} from '../Products'
 
 
-const ItemListContainerCard = () => {
+const ItemListContainer = () => {
     
     const styles = {
         color: 'white',
@@ -13,33 +13,28 @@ const ItemListContainerCard = () => {
         textAlign: 'center',
     }
 
-    const [items, setItems] = useState([])
+    const [data, setData] = useState([])
 
     useEffect(() => {
-        getProducts().then( response => {
-            console.log( response );
-            setItems( response )
-        })
-        }, [])
-        
-    const getProducts = () => {
-        return new Promise( resolve => {
+        const getData = new Promise(resolve => {
             setTimeout(() => {
-            resolve( products )
+                resolve(products)
             }, 1000);
-        })
-        }
+        });
+        getData.then(res => setData(res));
 
+    }, [data])
+    
     return (
         <>
             <div style={styles}>HERRAMIENTAS EINHELL</div>
-            <div class="flex justify-center">
+            <div className="flex justify-center">
             <div className="grid grid-cols-3 gap-8">
-            { items.map( i => <ItemCard key={i.id} {...i}/> ) }
+            { data.map( i => <ItemCard key={i.id} {...i}/> ) }
             </div>
             </div>
         </>
     )
 }
 
-export default ItemListContainerCard
+export default ItemListContainer

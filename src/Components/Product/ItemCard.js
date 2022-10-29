@@ -11,7 +11,7 @@ const ItemCard = ({id, img, name}) => {
             <img src={img} alt={name} className="rounded-xl" />
           </figure>
           <div className="card-body items-center text-center">
-            <h2 className="card-title bg-neutral-focus" class = "text-red-500 text-xl font-bold">{name}</h2>
+            <h2 className="card-title bg-neutral-focus text-red-500 text-xl font-bold">{name}</h2>
           </div>
         </div>
     </Link>

@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './Components/Navbar';
-import ItemListContainer from './Components/ItemListContainer';
+import ItemListContainerInicio from './Components/Home/ItemListContainerInicio';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ItemListContainerCard from './Components/Card/ItemListContainerCard';
-import ItemDetail from './Components/Card/ItemDetail';
+import ItemListContainer from './Components/Product/ItemListContainer';
+import ItemDetailContainer from './Components/Detail/ItemDetailContainer';
+import React from 'react';
+import CartProvider from './context/CartContext';
+import Cart from './Components/Cart/Cart'
+import ListContainer from './Components/firebase-example/ListContainer';
+
+
 
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar/>
-        <h1 className='title'>FERRETERIA ALEJANDRA</h1>
-        <Routes>
-          <Route path={'/Inicio'} element={<ItemListContainer/>} />
-          <Route path={'/Productos'} element={<ItemListContainerCard/>} />
-          <Route path={'/Productos/item/:id'} element={<ItemDetail/>} />
-        </Routes>
+        <CartProvider>
+          <Navbar/>
+          <h1 className='title'>FERRETERIA ALEJANDRA</h1>
+          <Routes>
+            <Route path={'/Inicio'} element={<ItemListContainerInicio/>} />
+            <Route path={'/Productos'} element={<ItemListContainer/>} />
+            <Route path={'/Productos/item/:id'} element={<ItemDetailContainer/>} />
+            <Route path={'/cart'} element={<Cart/>} />
+            <Route path={'/firebase'} element={<ListContainer/>} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </>
   );

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../recursos/logo ferreteria.png'
-import CartWidget from './CartWidget'
+import CartWidget from '../Components/Cart/CartWidget'
 
 const Navbar = () => {
 return (
@@ -17,12 +17,9 @@ return (
             <ul className="menu menu-horizontal p-0">
             <li><Link to='Inicio'>Inicio</Link></li>
             <li><Link to='Productos'>Productos</Link></li>
-            <li><Link to=''>Ofertas</Link></li>
-            <li><Link to=''>Nosotros</Link></li>
-            <li><Link to=''>Contacto</Link></li>
+            <li><Link to='/cart'><CartWidget/></Link></li>
             </ul>
         </div>
-    <CartWidget/>
     </div>
 )
 }

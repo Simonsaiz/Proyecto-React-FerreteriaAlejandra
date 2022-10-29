@@ -1,7 +1,7 @@
 import React from 'react'
-import ferreteria from '../recursos/ferreteria 800x400.jpg'
+import ferreteria from '../../recursos/ferreteria 800x400.jpg'
 
-const ItemListContainer = ({Bienvenidos}) => {
+const ItemListContainerInicio = () => {
     const styles= {
         textAlign: 'center',
         fontFamily:'Segoe UI',
@@ -14,10 +14,10 @@ const ItemListContainer = ({Bienvenidos}) => {
     <>
     <div style={styles}>Productos y herrmientas al mejor precio</div>
     <div >
-      <img class="ml-5 mt-5 rounded-lg" src={ferreteria}/>
+      <img className="ml-5 mt-5 rounded-lg" src={ferreteria} alt="ferreteria"/>
       </div>
     </>
   )
 }
 
-export default ItemListContainer
+export default ItemListContainerInicio
