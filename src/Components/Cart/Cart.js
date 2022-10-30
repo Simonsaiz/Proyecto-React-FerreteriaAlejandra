@@ -1,19 +1,46 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useCartContext } from '../../context/CartContext'
 import {Link} from 'react-router-dom'
 import ItemCart from './CartItem'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 
+export const UserForm = ( {setUser} ) => {
+
+  const updateUser = ( event ) => {
+    setUser( user => ({...user, [event.target.name]: event.target.value }))
+    console.log( event.target.value );
+    console.log( event.target.name );
+  }
+
+  return (
+    <div className='mt-10'>
+    <h1 className='text-white font-bolder ml-5'>PARA FINALIZAR COMPRA, COMPLETAR LOS DATOS:</h1>
+    <div className="form-control">
+      <label className="input-group m-3">
+        <span>Name</span>
+        <input onChange={updateUser} type="text" name='name' placeholder="" className="input input-bordered" />
+      </label>
+      <label className="input-group m-3">
+        <span>Phone</span>
+        <input onChange={updateUser} type="text" name='phone' placeholder="" className="input input-bordered" />
+      </label>
+      <label className="input-group m-3">
+        <span>Email</span>
+        <input onChange={updateUser} type="text" name='email' placeholder="" className="input input-bordered" />
+      </label>
+    </div>
+  </div>
+  )
+}
+
+
 const Cart = () => {
+
+    const [user, setUser] = useState({})
     const { cart, totalPrice } = useCartContext();
 
     const order = {
-      buyer: {
-        name: '',
-        email: '',
-        phone: '',
-        addres: ''
-      },
+      buyer: user,
       items: cart.map((product ) => ({
         id: product.id,
         title: product.name,
@@ -26,8 +53,10 @@ const Cart = () => {
     const handleClick = () => {
         const db = getFirestore();
         const ordersCollection = collection(db, 'orders');
-        addDoc(ordersCollection, order)
-        .then(({id}) => console.log(id))
+        addDoc(ordersCollection, order).then(({id}) => { 
+          console.log(id);
+          alert(id)
+      })
     }
 
     if (cart.length === 0) {
@@ -47,7 +76,8 @@ const Cart = () => {
       <div className='text-purple-700 text-xl ml-10'>
         Total: ${totalPrice()}
       </div>
-      <button onClick={handleClick}>Realizar compra</button>
+      <UserForm setUser={setUser}/>
+      <button className='btn ml-20' onClick={handleClick}>Realizar compra</button>
     </>
   )
 }
