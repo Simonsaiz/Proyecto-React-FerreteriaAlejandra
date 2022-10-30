@@ -20,7 +20,7 @@ export const ItemDetailCard = ({item}) => {
                 <p className="text-black font-bold">Precio:  ${ item.price }</p>
                 {
                     goToCart
-                        ? <Link to='/cart'>Finalizar compra</Link>
+                        ? <Link className='btn text-white' to='/cart'>Finalizar compra</Link>
                         : <ItemCount initial={1} stock={5} onAdd={onAdd}/>
                 }
             </div>

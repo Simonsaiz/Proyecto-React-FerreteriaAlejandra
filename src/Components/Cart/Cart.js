@@ -3,6 +3,7 @@ import { useCartContext } from '../../context/CartContext'
 import {Link} from 'react-router-dom'
 import ItemCart from './CartItem'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
+import Swal from 'sweetalert2'
 
 export const UserForm = ( {setUser} ) => {
 
@@ -17,15 +18,15 @@ export const UserForm = ( {setUser} ) => {
     <h1 className='text-white font-bolder ml-5'>PARA FINALIZAR COMPRA, COMPLETAR LOS DATOS:</h1>
     <div className="form-control">
       <label className="input-group m-3">
-        <span>Name</span>
+        <span className='text-white'>Name</span>
         <input onChange={updateUser} type="text" name='name' placeholder="" className="input input-bordered" />
       </label>
       <label className="input-group m-3">
-        <span>Phone</span>
+        <span className='text-white'>Phone</span>
         <input onChange={updateUser} type="text" name='phone' placeholder="" className="input input-bordered" />
       </label>
       <label className="input-group m-3">
-        <span>Email</span>
+        <span className='text-white' >Email</span>
         <input onChange={updateUser} type="text" name='email' placeholder="" className="input input-bordered" />
       </label>
     </div>
@@ -56,6 +57,10 @@ const Cart = () => {
         addDoc(ordersCollection, order).then(({id}) => { 
           console.log(id);
           alert(id)
+          Swal.fire({
+            icon: 'success',
+            text: 'Compra exitosa',
+          })
       })
     }
 
@@ -73,11 +78,11 @@ const Cart = () => {
       {
         cart.map(product => <ItemCart key={product.id} product={product} />) 
       }
-      <div className='text-purple-700 text-xl ml-10'>
+      <div className='text-white text-xl ml-20'>
         Total: ${totalPrice()}
       </div>
       <UserForm setUser={setUser}/>
-      <button className='btn ml-20' onClick={handleClick}>Realizar compra</button>
+      <button className='btn ml-20 text-white bg-green-700' onClick={handleClick}>Realizar compra</button>
     </>
   )
 }
